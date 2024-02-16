@@ -9,9 +9,9 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
@@ -19,9 +19,9 @@ jobs:
       working-directory: Food_to_go
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build
       working-directory: Food_to_go
 
     - name: Test
-      run: dotnet test --no-build --configuration Release --verbosity normal
+      run: dotnet test
       working-directory: Food_to_go

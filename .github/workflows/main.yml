@@ -2,11 +2,6 @@ name: .NET Test
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -15,23 +10,18 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Navigate to project folder
-      run: cd $(find . -type d -print -quit)
-
-    - name: List files in directory
-      run: ls -R
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: Food_to_go
 
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      working-directory: Food_to_go
 
     - name: Test
       run: dotnet test --no-build --configuration Release --verbosity normal
+      working-directory: Food_to_go

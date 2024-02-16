@@ -1,21 +1,22 @@
-name: .NET Test
+name: dotnet package
 
-on:
-  push:
+on: [push]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
+        dotnet-version: '6.0.x'
+    - name: Navigate to project folder
+      run: cd Food_to_go
+    - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-build --configuration Release --verbosity normal
+      run: dotnet build
+    - name: Test with the dotnet CLI
+      run: dotnet test

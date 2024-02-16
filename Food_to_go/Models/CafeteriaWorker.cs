@@ -10,6 +10,6 @@ namespace Food_to_go.Models
 
         public int EmployeeNumber { get; set; }
 
-        public string WorkLocation { get; set; }
+        public virtual Cafeteria WorkLocation { get; set; }
     }
 }

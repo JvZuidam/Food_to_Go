@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Food_to_go.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Food_to_goContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Food_to_goContext") ?? throw new InvalidOperationException("Connection string 'Food_to_goContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

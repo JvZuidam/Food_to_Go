@@ -6,7 +6,7 @@
         
         public string Description { get; set; }
 
-        public Product[] Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         
         public DateTime ReservedFrom { get; set; }
 
@@ -18,6 +18,6 @@
 
         public string MealType { get; set; }
 
-        public Student? ReservedBy { get; set; }
+        public virtual Student? ReservedBy { get; set; }
     }
 }

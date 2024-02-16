@@ -9,5 +9,7 @@
         public string Location { get; set; }
         
         public bool HotMeal { get; set; }
+
+        public virtual ICollection<CafeteriaWorker> CafeteriaWorkers { get; set; }
     }
 }
